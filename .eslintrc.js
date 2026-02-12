@@ -20,10 +20,11 @@ module.exports = {
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     eqeqeq: 'error',
-    'no-trailing-spaces': 'error',
+    'no-trailing-spaces': ['error', { 'skipBlankLines': true }],
     'object-curly-spacing': ['error', 'always'],
     'arrow-spacing': ['error', { before: true, after: true }],
     'no-console': 'off',
     'react/prop-types': 0,
+    'no-unused-vars': 'warn',
   },
 }
