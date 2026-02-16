@@ -28,4 +28,19 @@ jobs:
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.64.0
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test Success
+        uses: rjstone/discord-webhook-notify@v2
+        if: success()
+        with:
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+            severity: info
+            details: New version gets deployed!
+      - name: Test Failures
+        uses: rjstone/discord-webhook-notify@v2
+        if: failure()
+        with:
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+            severity: error
+            details: build fails!         
+
